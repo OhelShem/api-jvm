@@ -51,13 +51,13 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
                 parsedData.serverUpdateDate = obj["updateDate"].long
                 parsedData.changesDate = obj["changesDate"].long
                 if ("changes" in obj) {
-                    parsedData.changes = obj["changes"].let { if (it.isJsonObject) emptyList() else gson.fromJson<ArrayList<Change>>(it) }
+                    parsedData.changes = obj["changes"].let { if (it.isJsonObject) null else gson.fromJson<ArrayList<Change>>(it) }
                 }
                 if ("tests" in obj) {
-                    parsedData.tests = obj["tests"].let { if (it.isJsonObject) emptyList() else gson.fromJson<ArrayList<Test>>(it) }
+                    parsedData.tests = obj["tests"].let { if (it.isJsonObject) null else gson.fromJson<ArrayList<Test>>(it) }
                 }
                 if ("messages" in obj) {
-                    parsedData.messages = obj["messages"].let { if (it.isJsonObject) emptyList() else gson.fromJson<ArrayList<Message>>(it) }
+                    parsedData.messages = obj["messages"].let { if (it.isJsonObject) null else gson.fromJson<ArrayList<Message>>(it) }
                 }
                 if ("userInfo" in obj) {
                     parsedData.userData = gson.fromJson(obj["userInfo"])
