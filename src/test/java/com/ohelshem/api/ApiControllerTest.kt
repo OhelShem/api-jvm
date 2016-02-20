@@ -25,6 +25,7 @@ import com.ohelshem.api.model.*
 import com.ohelshem.api.util.BaseTestCase
 import com.ohelshem.api.util.RequestsControllerBlockingImpl
 import com.ohelshem.api.util.getData
+import java.util.*
 import kotlin.test.*
 
 /**
@@ -43,12 +44,14 @@ class ApiControllerTest: BaseTestCase() {
         apiController.setNetworkAvailabilityProvider { true }
         apiController[1] = object : ApiController.Callback {
             override fun onSuccess(apis: List<ApiController.Api>) {
-                assertEquals(5, apis.size)
-                assertNotNull(StubApiDatabase.changes)
-                assertNotNull(StubApiDatabase.timetable)
-                assertNotNull(StubApiDatabase.tests)
-                assertNotNull(StubApiDatabase.messages)
-                assertNotNull(StubApiDatabase.userData)
+                if (Calendar.getInstance()[Calendar.DAY_OF_WEEK] != Calendar.SATURDAY) {
+                    assertEquals(5, apis.size)
+                    assertNotNull(StubApiDatabase.changes)
+                    assertNotNull(StubApiDatabase.timetable)
+                    assertNotNull(StubApiDatabase.tests)
+                    assertNotNull(StubApiDatabase.messages)
+                    assertNotNull(StubApiDatabase.userData)
+                }
                 assertNotEquals(0, StubApiDatabase.changesDate)
                 assertNotEquals(0, StubApiDatabase.serverUpdateDate)
                 assertNotEquals(0, StubApiDatabase.updateDate)
