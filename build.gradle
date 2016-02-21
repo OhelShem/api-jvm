@@ -1,6 +1,4 @@
 group 'com.ohelshem'
-version '0.1-SNAPSHOT'
-
 
 buildscript {
     ext {
@@ -42,7 +40,7 @@ publish {
     desc = 'The official api for JVM platform'
     groupId = 'com.ohelshem'
     licences = ['Apache-2.0']
-    publishVersion = '0.1.1'
+    publishVersion = '0.2.0'
     website = 'https://github.com/OhelShem/api-jvm'
 }
 

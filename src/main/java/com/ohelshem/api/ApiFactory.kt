@@ -16,17 +16,16 @@
  */
 package com.ohelshem.api
 
-import com.ohelshem.api.controller.declaration.ApiController
-import com.ohelshem.api.controller.declaration.ApiDatabase
+import com.ohelshem.api.controller.declaration.ApiProvider
 import com.ohelshem.api.controller.declaration.ColorProvider
-import com.ohelshem.api.controller.implementation.ApiControllerImpl
 import com.ohelshem.api.controller.implementation.ApiParserImpl
+import com.ohelshem.api.controller.implementation.ApiProviderImpl
 import com.ohelshem.api.controller.implementation.ColorProviderImpl
 import com.ohelshem.api.controller.implementation.RequestsControllerImpl
 
 object ApiFactory {
     @JvmStatic
-    fun create(apiDatabase: ApiDatabase, colorProvider: ColorProvider): ApiController = ApiControllerImpl(apiDatabase, ApiParserImpl(colorProvider), RequestsControllerImpl)
+    fun create(colorProvider: ColorProvider): ApiProvider = ApiProviderImpl(ApiParserImpl(colorProvider), RequestsControllerImpl)
 
     @JvmStatic
     fun defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, String>>) = ColorProviderImpl(filters, defaultColor)

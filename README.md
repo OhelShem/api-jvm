@@ -22,7 +22,7 @@ repositories {
 **Step 2. Add the dependency in the form**
 ```groovy
 dependencies {
-	    compile 'com.ohelshem:api:0.1.1'
+	    compile 'com.ohelshem:api:0.2.0'
 	}
 ```
 
@@ -31,26 +31,6 @@ dependencies {
 
 ### Prerequisites
 In order to use the API, you should implement few interfaces that the API is based on:
-
-### `ApiDatabase`
-The API uses this class in order to store all the data.
-
-* `serverUpdateDate: long` - The date value in the server on last update.
-* `changesDate: long` - The date that the saved changes are valid for.
-* `updateDate: long` - The date value in the client on last update.
-
-___
-
-* `userData: UserData` - User's private info provided by the API.
-* `timetable: Hour[][]` - The user's timetable.
-
-___
-
-* `changes: List<Change>` - The changes for the User's layer for the day.
-* `tests: List<Test>` - User's tests for the year.
-* `messages: List<Message>` - The messages the user has received.
-
-**Note:** All dates are in Epoch time.
 
 ### `ColorProvider`
 A change by itself doesn't have a color. Instead, a filter is being applied on the change
@@ -68,45 +48,29 @@ ApiFactory.defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, Strin
 First, create the controller:
 
 ```java
-ApiController apiController = ApiFactory.create(apiDatabase, colorProvider)
-apiController.setNetworkAvailabilityProvider(new Function0<Boolean>() {
-            @Override
-            public Boolean invoke() {
-                return true; // Check if network is available, true for available
-            }
+ApiProvider apiProvider = ApiFactory.create(colorProvider)
+```
+
+Second, call the `update()` method:
+
+```java
+apiProvider.update(new AuthData(userId, userPassword), lastUpdateTime, new ApiCallback() {
+         @Override
+              protected void onResult(Result<ApiParser.ParsedData, Exception> result) {
+                                                                       
+              }
 });
 ```
 
-Second, attach a callback:
+The [Result library](https://github.com/kittinunf/Result) is a tiny framework for modelling success/failure of operations.
 
 ```java
-apiController.setCallback(id, new ApiController.Callback() {
-            @Override
-            public void onSuccess(@NotNull List<? extends ApiController.Api> apis) {
-                // the list contains all the apis that were updated.
-                // enum Api { Changes, Messages, Tests, Timetable, UserData }
-            }
+ParsedData data = result.get() // null if error
+Exception exception = result.component2() // null if valid
 
-            @Override
-            public void onFail(@NotNull UpdateError error) {
-
-            }
-        });
+// Looks much better in Kotlin. Sorry :)
 ```
 
-`Id` is an int, id for the callback.
-
-**Note:** in order to read the data, work with `ApiDatabase`. `ApiController` store its data there automatically.
-
-Third, set the user data:
-
-```java
-apiController.setAuthData(new AuthData(userId, userPassword));
-```
-
-Now, Just call `apiController.update()`.
-
-**Note:** If you want to update for login, it is better to use `apiController.login()` which also clear the server update time.
 
 ## Android support
 In order to use this with Android, you need to add a gradle dependency for `fuel-android` module.
@@ -128,13 +92,16 @@ This library was written fully in [Kotlin](https://kotlinlang.org/). Kotlin is S
 for the JVM, Android and the browser with 100% interoperable with Java™.
 
 ```kotlin
-val apiController = ApiFactory.create(apiDatabase, colorProvider)
+val apiProvider = ApiFactory.create(colorProvider)
 
-apiController.setNetworkAvailabilityProvider { true }
-apiController[callbackId] = object : Callback { /* Implement it */ }
-apiController.authData = AuthData(userId, userPassword)
-
-apiController.update()
+apiProvider(AuthData(userId, userPassword), lastUpdateTime) { result ->
+    result.success {
+        // Only called on success
+    }
+    result.failure {
+        // only called on failure
+    }
+}
 ```
 
 # License
