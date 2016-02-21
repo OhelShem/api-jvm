@@ -44,8 +44,8 @@ ApiFactory.defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, Strin
 
 ```
 
-## Create the controller
-First, create the controller:
+## Usage
+First, create the provider:
 
 ```java
 ApiProvider apiProvider = ApiFactory.create(colorProvider)
@@ -55,10 +55,10 @@ Second, call the `update()` method:
 
 ```java
 apiProvider.update(new AuthData(userId, userPassword), lastUpdateTime, new ApiCallback() {
-         @Override
-              protected void onResult(Result<ApiParser.ParsedData, Exception> result) {
+    @Override
+       protected void onResult(Result<ApiParser.ParsedData, Exception> result) {
                                                                        
-              }
+       }
 });
 ```
 
