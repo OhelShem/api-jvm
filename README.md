@@ -22,7 +22,7 @@ repositories {
 **Step 2. Add the dependency in the form**
 ```groovy
 dependencies {
-	    compile 'com.ohelshem:api:0.2.0'
+	    compile 'com.ohelshem:api:0.2.1'
 	}
 ```
 
