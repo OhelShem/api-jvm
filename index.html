@@ -57,7 +57,7 @@ The school has about 1,550 students studying in 45 classes, from ninth to twelft
 <p><strong>Step 2. Add the dependency in the form</strong></p>
 
 <div class="highlight highlight-source-groovy"><pre>dependencies {
-        compile <span class="pl-s"><span class="pl-pds">'</span>com.ohelshem:api:0.1.1<span class="pl-pds">'</span></span>
+        compile <span class="pl-s"><span class="pl-pds">'</span>com.ohelshem:api:0.2.0<span class="pl-pds">'</span></span>
     }</pre></div>
 
 <h2>
@@ -67,43 +67,6 @@ The school has about 1,550 students studying in 45 classes, from ninth to twelft
 <a id="prerequisites" class="anchor" href="#prerequisites" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Prerequisites</h3>
 
 <p>In order to use the API, you should implement few interfaces that the API is based on:</p>
-
-<h3>
-<a id="apidatabase" class="anchor" href="#apidatabase" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>ApiDatabase</code>
-</h3>
-
-<p>The API uses this class in order to store all the data.</p>
-
-<ul>
-<li>
-<code>serverUpdateDate: long</code> - The date value in the server on last update.</li>
-<li>
-<code>changesDate: long</code> - The date that the saved changes are valid for.</li>
-<li>
-<code>updateDate: long</code> - The date value in the client on last update.</li>
-</ul>
-
-<hr>
-
-<ul>
-<li>
-<code>userData: UserData</code> - User's private info provided by the API.</li>
-<li>
-<code>timetable: Hour[][]</code> - The user's timetable.</li>
-</ul>
-
-<hr>
-
-<ul>
-<li>
-<code>changes: List&lt;Change&gt;</code> - The changes for the User's layer for the day.</li>
-<li>
-<code>tests: List&lt;Test&gt;</code> - User's tests for the year.</li>
-<li>
-<code>messages: List&lt;Message&gt;</code> - The messages the user has received.</li>
-</ul>
-
-<p><strong>Note:</strong> All dates are in Epoch time.</p>
 
 <h3>
 <a id="colorprovider" class="anchor" href="#colorprovider" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>ColorProvider</code>
@@ -119,44 +82,27 @@ name and a color. It will use <code>Contains</code> with the String.</p>
 </pre></div>
 
 <h2>
-<a id="create-the-controller" class="anchor" href="#create-the-controller" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create the controller</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
-<p>First, create the controller:</p>
+<p>First, create the provider:</p>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">ApiController</span> apiController <span class="pl-k">=</span> <span class="pl-smi">ApiFactory</span><span class="pl-k">.</span>create(apiDatabase, colorProvider)
-apiController<span class="pl-k">.</span>setNetworkAvailabilityProvider(<span class="pl-k">new</span> <span class="pl-k">Function0&lt;<span class="pl-smi">Boolean</span>&gt;</span>() {
-            <span class="pl-k">@Override</span>
-            <span class="pl-k">public</span> <span class="pl-smi">Boolean</span> <span class="pl-en">invoke</span>() {
-                <span class="pl-k">return</span> <span class="pl-c1">true</span>; <span class="pl-c">// Check if network is available, true for available</span>
-            }
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">ApiProvider</span> apiProvider <span class="pl-k">=</span> <span class="pl-smi">ApiFactory</span><span class="pl-k">.</span>create(colorProvider)</pre></div>
+
+<p>Second, call the <code>update()</code> method:</p>
+
+<div class="highlight highlight-source-java"><pre>apiProvider<span class="pl-k">.</span>update(<span class="pl-k">new</span> <span class="pl-smi">AuthData</span>(userId, userPassword), lastUpdateTime, <span class="pl-k">new</span> <span class="pl-smi">ApiCallback</span>() {
+    <span class="pl-k">@Override</span>
+       <span class="pl-k">protected</span> <span class="pl-k">void</span> <span class="pl-en">onResult</span>(<span class="pl-k">Result&lt;<span class="pl-smi">ApiParser</span>.</span><span class="pl-smi">ParsedData</span>, <span class="pl-smi">Exception</span>&gt; <span class="pl-v">result</span>) {
+
+       }
 });</pre></div>
 
-<p>Second, attach a callback:</p>
+<p>The <a href="https://github.com/kittinunf/Result">Result library</a> is a tiny framework for modelling success/failure of operations.</p>
 
-<div class="highlight highlight-source-java"><pre>apiController<span class="pl-k">.</span>setCallback(id, <span class="pl-k">new</span> <span class="pl-smi">ApiController</span>.<span class="pl-smi">Callback</span>() {
-            <span class="pl-k">@Override</span>
-            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onSuccess</span>(<span class="pl-k">@NotNull</span> <span class="pl-k">List&lt;? extends <span class="pl-smi">ApiController</span>.</span><span class="pl-smi">Api</span>&gt; <span class="pl-v">apis</span>) {
-                <span class="pl-c">// the list contains all the apis that were updated.</span>
-                <span class="pl-c">// enum Api { Changes, Messages, Tests, Timetable, UserData }</span>
-            }
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">ParsedData</span> data <span class="pl-k">=</span> result<span class="pl-k">.</span>get() <span class="pl-c">// null if error</span>
+<span class="pl-smi">Exception</span> exception <span class="pl-k">=</span> result<span class="pl-k">.</span>component2() <span class="pl-c">// null if valid</span>
 
-            <span class="pl-k">@Override</span>
-            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onFail</span>(<span class="pl-k">@NotNull</span> <span class="pl-smi">UpdateError</span> <span class="pl-v">error</span>) {
-
-            }
-        });</pre></div>
-
-<p><code>Id</code> is an int, id for the callback.</p>
-
-<p><strong>Note:</strong> in order to read the data, work with <code>ApiDatabase</code>. <code>ApiController</code> store its data there automatically.</p>
-
-<p>Third, set the user data:</p>
-
-<div class="highlight highlight-source-java"><pre>apiController<span class="pl-k">.</span>setAuthData(<span class="pl-k">new</span> <span class="pl-smi">AuthData</span>(userId, userPassword));</pre></div>
-
-<p>Now, Just call <code>apiController.update()</code>.</p>
-
-<p><strong>Note:</strong> If you want to update for login, it is better to use <code>apiController.login()</code> which also clear the server update time.</p>
+<span class="pl-c">// Looks much better in Kotlin. Sorry :)</span></pre></div>
 
 <h2>
 <a id="android-support" class="anchor" href="#android-support" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Android support</h2>
@@ -179,13 +125,16 @@ dependencies {
 <p>This library was written fully in <a href="https://kotlinlang.org/">Kotlin</a>. Kotlin is Statically typed programming language
 for the JVM, Android and the browser with 100% interoperable with Java™.</p>
 
-<div class="highlight highlight-source-Kotlin"><pre><span class="pl-k">val</span> <span class="pl-en">apiController</span> <span class="pl-k">=</span> ApiFactory<span class="pl-k">.</span>create(apiDatabase, colorProvider)
+<div class="highlight highlight-source-Kotlin"><pre><span class="pl-k">val</span> <span class="pl-en">apiProvider</span> <span class="pl-k">=</span> ApiFactory<span class="pl-k">.</span>create(colorProvider)
 
-apiController<span class="pl-k">.</span>setNetworkAvailabilityProvider { <span class="pl-c1">true</span> }
-apiController[callbackId] <span class="pl-k">=</span> object <span class="pl-k">:</span> <span class="pl-e">Callback</span> { <span class="pl-c">/* Implement it */</span> }
-apiController<span class="pl-k">.</span>authData <span class="pl-k">=</span> AuthData(userId, userPassword)
-
-apiController<span class="pl-k">.</span>update()</pre></div>
+apiProvider(AuthData(userId, userPassword), lastUpdateTime) { result <span class="pl-k">-&gt;</span>
+    result<span class="pl-k">.</span>success {
+        <span class="pl-c">// Only called on success</span>
+    }
+    result<span class="pl-k">.</span>failure {
+        <span class="pl-c">// only called on failure</span>
+    }
+}</pre></div>
 
 <h1>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
