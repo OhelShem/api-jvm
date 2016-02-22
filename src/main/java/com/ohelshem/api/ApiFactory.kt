@@ -25,7 +25,7 @@ import com.ohelshem.api.controller.implementation.RequestsControllerImpl
 
 object ApiFactory {
     @JvmStatic
-    fun create(colorProvider: ColorProvider): ApiProvider = ApiProviderImpl(ApiParserImpl(colorProvider), RequestsControllerImpl)
+    fun create(colorProvider: ColorProvider, timetableColors: IntArray): ApiProvider = ApiProviderImpl(ApiParserImpl(colorProvider, timetableColors), RequestsControllerImpl)
 
     @JvmStatic
     fun defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, String>>) = ColorProviderImpl(filters, defaultColor)

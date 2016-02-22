@@ -22,7 +22,7 @@ repositories {
 **Step 2. Add the dependency in the form**
 ```groovy
 dependencies {
-	    compile 'com.ohelshem:api:0.2.1'
+	    compile 'com.ohelshem:api:0.2.2'
 	}
 ```
 
@@ -48,7 +48,7 @@ ApiFactory.defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, Strin
 First, create the provider:
 
 ```java
-ApiProvider apiProvider = ApiFactory.create(colorProvider)
+ApiProvider apiProvider = ApiFactory.create(colorProvider, timetableColors)
 ```
 
 Second, call the `update()` method:

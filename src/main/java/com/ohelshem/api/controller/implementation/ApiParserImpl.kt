@@ -30,8 +30,7 @@ import com.ohelshem.api.model.Message
 import com.ohelshem.api.model.Test
 import java.util.*
 
-class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
-    override var timetableColors: IntArray = intArrayOf()
+class ApiParserImpl(private val colorProvider: ColorProvider, override var timetableColors: IntArray = intArrayOf()) : ApiParser {
     private val gson = GsonBuilder()
             .registerTypeAdapter<Change> {
                 deserialize {
