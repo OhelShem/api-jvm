@@ -17,14 +17,15 @@
 
 package com.ohelshem.api
 
+import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.result.failure
 import com.github.kittinunf.result.success
 import com.ohelshem.api.controller.declaration.ApiProvider
 import com.ohelshem.api.controller.implementation.ApiParserImpl
 import com.ohelshem.api.controller.implementation.ApiProviderImpl
+import com.ohelshem.api.controller.implementation.RequestsControllerImpl
 import com.ohelshem.api.model.AuthData
 import com.ohelshem.api.util.BaseTestCase
-import com.ohelshem.api.util.RequestsControllerBlockingImpl
 import com.ohelshem.api.util.getData
 import java.util.*
 import kotlin.test.assertNotEquals
@@ -39,11 +40,14 @@ class ApiProviderTest : BaseTestCase() {
     val apiProvider: ApiProvider = ApiProviderImpl(ApiParserImpl(colorProvider).apply {
         timetableColors = intArrayOf(0xF44336, 0xE91E63, 0x9C27B0, 0x673AB7, 0x3F51B5, 0x2196F3, 0x03A9F4,
                 0x00BCD4, 0x009688, 0x4CAF50, 0x8BC34A, 0xCDDC39, 0xFF9800, 0xFF5722, 0x795548, 0x607D8B)
-    }, RequestsControllerBlockingImpl)
+    }, RequestsControllerImpl)
 
 
     @org.junit.Test
     fun testProvider() {
+        Fuel.testMode {
+
+        }
         val (id, password) = "credentials.txt".getData().split(System.lineSeparator())
         apiProvider.update(AuthData(id, password), 0) {
             it.success {

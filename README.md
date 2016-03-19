@@ -22,7 +22,7 @@ repositories {
 **Step 2. Add the dependency in the form**
 ```groovy
 dependencies {
-	    compile 'com.ohelshem:api:0.2.2'
+	    compile 'com.ohelshem:api:0.2.3'
 	}
 ```
 
@@ -83,7 +83,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.kittinunf.fuel:fuel-android:1.0.0'
+    compile 'com.github.kittinunf.fuel:fuel-android:1.1.1'
 }
 ```
 
