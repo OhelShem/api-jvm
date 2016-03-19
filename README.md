@@ -44,6 +44,8 @@ ApiFactory.defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, Strin
 
 ```
 
+For the colors used by the Android application check [this](https://github.com/OhelShem/android/blob/master/app/src/main/res/values/colors_changes.xml)
+
 ## Usage
 First, create the provider:
 
