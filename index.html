@@ -57,7 +57,7 @@ The school has about 1,550 students studying in 45 classes, from ninth to twelft
 <p><strong>Step 2. Add the dependency in the form</strong></p>
 
 <div class="highlight highlight-source-groovy"><pre>dependencies {
-        compile <span class="pl-s"><span class="pl-pds">'</span>com.ohelshem:api:0.2.2<span class="pl-pds">'</span></span>
+        compile <span class="pl-s"><span class="pl-pds">'</span>com.ohelshem:api:0.2.3<span class="pl-pds">'</span></span>
     }</pre></div>
 
 <h2>
@@ -81,12 +81,14 @@ name and a color. It will use <code>Contains</code> with the String.</p>
 <div class="highlight highlight-source-java"><pre><span class="pl-smi">ApiFactory</span><span class="pl-k">.</span>defaultColorProvider(defaultColor<span class="pl-k">:</span> <span class="pl-smi">Int</span>, filters<span class="pl-k">:</span> <span class="pl-k">List&lt;<span class="pl-k">Pair&lt;<span class="pl-smi">Int</span>, <span class="pl-smi">String</span>&gt;</span>&gt;</span> <span class="pl-k">|</span> <span class="pl-k">Map&lt;<span class="pl-smi">String</span>, <span class="pl-smi">Int</span>&gt;</span>)
 </pre></div>
 
+<p>For the colors used by the Android application check <a href="https://github.com/OhelShem/android/blob/master/app/src/main/res/values/colors_changes.xml">this</a></p>
+
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>First, create the provider:</p>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">ApiProvider</span> apiProvider <span class="pl-k">=</span> <span class="pl-smi">ApiFactory</span><span class="pl-k">.</span>create(colorProvider)</pre></div>
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">ApiProvider</span> apiProvider <span class="pl-k">=</span> <span class="pl-smi">ApiFactory</span><span class="pl-k">.</span>create(colorProvider, timetableColors)</pre></div>
 
 <p>Second, call the <code>update()</code> method:</p>
 
@@ -114,7 +116,7 @@ name and a color. It will use <code>Contains</code> with the String.</p>
 }
 
 dependencies {
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.github.kittinunf.fuel:fuel-android:1.0.0<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.github.kittinunf.fuel:fuel-android:1.1.1<span class="pl-pds">'</span></span>
 }</pre></div>
 
 <p>This library is based on a library called <a href="https://github.com/kittinunf/Fuel">Fuel</a> which need a plugin to work on Android as intended.</p>
