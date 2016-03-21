@@ -65,20 +65,22 @@ class ApiParserImpl(private val colorProvider: ColorProvider, override var timet
                     val timetableData = obj["timetable"].array
                     val lessons = HashMap<String, Int>(20)
                     var c = 0
-                    val timetable = Array(6) { arrayOfNulls<Hour>(10) }
+                    val timetable = Array(6) { arrayOfNulls<Hour>(MaxHoursADay) }
                     timetableData.forEach {
                         val lesson = it["name"].string
                         val teacher = it["teacher"].string
                         val day = it["day"].int - 1
                         val hour = it["hour"].int - 1
                         val color = lessons[lesson]
-                        if (color != null)
-                            timetable[day][hour] = Hour(lesson, teacher, color)
-                        else {
-                            c++
-                            if (c == timetableColors.size) c = 0
-                            timetable[day][hour] = Hour(lesson, teacher, timetableColors[c])
-                            lessons[lesson] = timetableColors[c]
+                        if (hour < MaxHoursADay) {
+                            if (color != null)
+                                timetable[day][hour] = Hour(lesson, teacher, color)
+                            else {
+                                c++
+                                if (c == timetableColors.size) c = 0
+                                timetable[day][hour] = Hour(lesson, teacher, timetableColors[c])
+                                lessons[lesson] = timetableColors[c]
+                            }
                         }
                     }
                     parsedData.timetable = timetable as Array<Array<Hour>>
@@ -93,5 +95,7 @@ class ApiParserImpl(private val colorProvider: ColorProvider, override var timet
         }
     }
 
-
+    companion object {
+        val MaxHoursADay = 11
+    }
 }
