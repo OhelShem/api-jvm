@@ -19,4 +19,6 @@ package com.ohelshem.api.controller.declaration
 
 interface ColorProvider {
     fun of(content: String): Int
+
+    val timetableColors: IntArray
 }

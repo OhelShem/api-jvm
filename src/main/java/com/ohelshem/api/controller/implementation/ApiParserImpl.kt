@@ -30,7 +30,7 @@ import com.ohelshem.api.model.Message
 import com.ohelshem.api.model.Test
 import java.util.*
 
-class ApiParserImpl(private val colorProvider: ColorProvider, override var timetableColors: IntArray = intArrayOf()) : ApiParser {
+class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
     private val gson = GsonBuilder()
             .registerTypeAdapter<Change> {
                 deserialize {
@@ -66,6 +66,7 @@ class ApiParserImpl(private val colorProvider: ColorProvider, override var timet
                     val lessons = HashMap<String, Int>(20)
                     var c = 0
                     val timetable = Array(6) { arrayOfNulls<Hour>(MaxHoursADay) }
+                    val timetableColors = colorProvider.timetableColors
                     timetableData.forEach {
                         val lesson = it["name"].string
                         val teacher = it["teacher"].string

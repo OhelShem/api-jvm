@@ -22,7 +22,7 @@ repositories {
 **Step 2. Add the dependency in the form**
 ```groovy
 dependencies {
-	    compile 'com.ohelshem:api:0.2.4'
+	    compile 'com.ohelshem:api:0.2.5'
 	}
 ```
 
@@ -40,7 +40,7 @@ The API provide a default color provider, with receives a default Color and a ma
 name and a color. It will use `Contains` with the String.
 
 ```java
-ApiFactory.defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, String>> | Map<String, Int>)
+ApiFactory.defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, String>> | Map<String, Int>, timetableColors: Int[])
 
 ```
 
@@ -50,7 +50,7 @@ For the colors used by the Android application check [this](https://github.com/O
 First, create the provider:
 
 ```java
-ApiProvider apiProvider = ApiFactory.create(colorProvider, timetableColors)
+ApiProvider apiProvider = ApiFactory.create(colorProvider)
 ```
 
 Second, call the `update()` method:

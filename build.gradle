@@ -2,7 +2,7 @@ group 'com.ohelshem'
 
 buildscript {
     ext {
-        kotlin_version = "1.0.1"
+        kotlin_version = "1.0.1-1"
     }
     repositories {
         jcenter()
@@ -44,7 +44,7 @@ publish {
     desc = 'The official api for JVM platform'
     groupId = 'com.ohelshem'
     licences = ['Apache-2.0']
-    publishVersion = '0.2.4'
+    publishVersion = '0.2.5'
     website = 'https://github.com/OhelShem/api-jvm'
 }
 

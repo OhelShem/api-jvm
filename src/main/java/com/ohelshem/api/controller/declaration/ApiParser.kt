@@ -23,8 +23,6 @@ import com.ohelshem.api.model.*
 interface ApiParser {
     fun parse(data: String): Result<ParsedData, ApiException>
 
-    var timetableColors: IntArray
-
     class ParsedData(var serverUpdateDate: Long = 0, var changesDate: Long = 0, var userData: UserData? = null, var changes: List<Change>? = null, var tests: List<Test>? = null,
                      var messages: List<Message>? = null, var timetable: Array<Array<Hour>>? = null)
 

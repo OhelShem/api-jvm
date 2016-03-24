@@ -19,6 +19,6 @@ package com.ohelshem.api.controller.implementation
 
 import com.ohelshem.api.controller.declaration.ColorProvider
 
-class ColorProviderImpl(val filters: List<Pair<Int, String>>, val default: Int): ColorProvider {
+class ColorProviderImpl(val filters: List<Pair<Int, String>>, val default: Int, override val timetableColors: IntArray) : ColorProvider {
     override fun of(content: String): Int = filters.firstOrNull { it.second in content }?.first ?: default
 }

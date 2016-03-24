@@ -26,6 +26,8 @@ fun String.getData() = getTestResource().readText()
 
 val WhiteColorProvider = object : ColorProvider {
     val color = 0xffffffff.toInt()
+
+    override val timetableColors: IntArray = intArrayOf(color)
     override fun of(content: String): Int = color
 }
 

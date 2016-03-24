@@ -25,11 +25,13 @@ import com.ohelshem.api.controller.implementation.RequestsControllerImpl
 
 object ApiFactory {
     @JvmStatic
-    fun create(colorProvider: ColorProvider, timetableColors: IntArray): ApiProvider = ApiProviderImpl(ApiParserImpl(colorProvider, timetableColors), RequestsControllerImpl)
+    fun create(colorProvider: ColorProvider): ApiProvider = ApiProviderImpl(ApiParserImpl(colorProvider), RequestsControllerImpl)
 
     @JvmStatic
-    fun defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, String>>) = ColorProviderImpl(filters, defaultColor)
+    fun defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, String>>, timetableColors: IntArray) =
+            ColorProviderImpl(filters, defaultColor, timetableColors)
 
     @JvmStatic
-    fun defaultColorProvider(defaultColor: Int, filters: Map<String, Int>) = ColorProviderImpl(filters.entries.map { it.value to it.key }, defaultColor)
+    fun defaultColorProvider(defaultColor: Int, filters: Map<String, Int>, timetableColors: IntArray) =
+            ColorProviderImpl(filters.entries.map { it.value to it.key }, defaultColor, timetableColors)
 }

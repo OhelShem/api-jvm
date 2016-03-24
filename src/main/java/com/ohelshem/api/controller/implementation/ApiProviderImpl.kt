@@ -8,6 +8,8 @@ import com.ohelshem.api.controller.declaration.RequestsController
 import com.ohelshem.api.model.AuthData
 
 class ApiProviderImpl(override val parser: ApiParser, private val requestsController: RequestsController) : ApiProvider {
+    override val apiVersion: String = "1.0.0"
+
     override fun update(authData: AuthData, lastUpdateTime: Long, callback: (Result<ApiParser.ParsedData, Exception>) -> Unit) {
         requestsController.post(ApiEndpoint, headers(authData, lastUpdateTime)) { response, result ->
             callback(result.flatMap { parser.parse(it) })
@@ -17,7 +19,8 @@ class ApiProviderImpl(override val parser: ApiParser, private val requestsContro
     private fun headers(authData: AuthData, lastUpdateTime: Long) = listOf(
             "identity" to authData.id,
             "password" to authData.password,
-            "lastUpdateTime" to lastUpdateTime.toString())
+            "lastUpdateTime" to lastUpdateTime.toString(),
+            "apiVersion" to apiVersion)
 
 
     companion object {
