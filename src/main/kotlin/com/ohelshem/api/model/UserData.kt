@@ -18,5 +18,26 @@
 package com.ohelshem.api.model
 
 import com.google.gson.annotations.SerializedName
+import com.ohelshem.api.Role
 
-data class Message(val id: Int, val title: String, val content: String, val author: Int, @SerializedName("lastchange") val date: Long)
+/**
+ * Represent the user's data provided by the current api.
+ */
+data class UserData(val id: Int,
+                    val identity: String,
+                    val privateName: String,
+                    val familyName: String,
+                    val layer: Int,
+                    @SerializedName("class") val clazz: Int,
+                    val gender: Int,
+                    val email: String,
+                    val phone: String,
+                    val birthday: String,
+                    val role: Role) {
+
+    fun isTeacher() = TeachersLayer == layer
+
+    companion object {
+        private const val TeachersLayer = 13
+    }
+}

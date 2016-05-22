@@ -19,7 +19,6 @@ package com.ohelshem.api.util
 
 import com.ohelshem.api.controller.declaration.Logger
 import com.ohelshem.api.logger
-import com.ohelshem.api.util.WhiteColorProvider
 import org.junit.Before
 
 abstract class BaseTestCase {

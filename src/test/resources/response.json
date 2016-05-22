@@ -1,355 +1,116 @@
 {
-  "updateDate":1454861839,
-  "changesDate":1454796000,
+  "updateDate": 1463914758000,
+  "changesDate": 1463864400000,
   "error":{
     "code":0
   },
   "userInfo":{
-    "id":42,
     "identity":123456789,
-    "firstname":"יואב",
-    "lastname":"שטרנברג",
-    "gender":1,
-    "class":4,
+    "id": 5,
+    "privateName": "יואב",
+    "familyName": "שטרנברג",
     "layer":11,
+    "class": 4,
+    "gender": 1,
+    "email": "yoav.sternberg@gmail.com",
     "phone":522324577,
     "birthday":"1999-05-18",
-    "email":"yoav.sternberg@gmail.com",
-    "password":"a0c55fdf6b3c10909d8b570fa4219f941275e750",
-    "perm":"administrator",
-    "image":"",
-    "pushidios":0,
-    "pushidand":"",
-    "filled":1,
-    "voted":0,
-    "secretKey":"",
-    "lastReset":"0000-00-00 00:00:00"
+    "role": "administrator"
   },
   "changes":[
     {
-      "clazz":7,
-      "hour":8,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":6,
-      "hour":8,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":2,
-      "hour":8,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":1,
-      "hour":8,
-      "content":"מגמה בלי עובד"
+      "clazz":12,
+      "hour": 4,
+      "content": "פעילות חברתית"
     },
     {
       "clazz":12,
-      "hour":7,
-      "content":"מבוטל"
-    },
-    {
-      "clazz":11,
-      "hour":7,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":10,
-      "hour":7,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":9,
-      "hour":7,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":8,
-      "hour":7,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":7,
-      "hour":7,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":6,
-      "hour":7,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":2,
-      "hour":7,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":1,
-      "hour":7,
-      "content":"מגמה בלי עובד"
+      "hour": 3,
+      "content": "פעילות חברתית"
     },
     {
       "clazz":12,
-      "hour":6,
-      "content":"וקס"
+      "hour": 2,
+      "content": "פעילות חברתית"
     },
     {
-      "clazz":11,
-      "hour":6,
-      "content":"אנגלית בלי פינקל"
-    },
-    {
-      "clazz":12,
-      "hour":5,
-      "content":"בספריה"
-    },
-    {
-      "clazz":5,
-      "hour":5,
-      "content":"חנ\"ג בלי גולן"
-    },
-    {
-      "clazz":6,
-      "hour":4,
-      "content":"בספריה"
-    },
-    {
-      "clazz":1,
-      "hour":4,
-      "content":"בספריה"
-    },
-    {
-      "clazz":8,
-      "hour":8,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":9,
-      "hour":8,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":10,
-      "hour":8,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":11,
-      "hour":8,
-      "content":"מגמה בלי עובד"
-    },
-    {
-      "clazz":5,
-      "hour":10,
-      "content":"מבוטל"
-    }
-  ],
-  "messages":[
-    {
-      "id":7,
-      "title":"ברוכים הבאים לתיכון אהל שם",
-      "content":"<p><img alt=\"\" src=\"http:\/\/ohel-shem.com\/~nirnaim\/nirportal\/upload_dir\/icon.png\" style=\"height:100px; width:100px\" \/>תיכון אהל שם הוא....<\/p>\r\n",
-      "author":1,
-      "lastchange":1452771000
-    },
-    {
-      "id":1,
-      "title":"ניסיון מערכת חדשות עם כותרת ממש ארוכה כמו הכותרת שאני עכשיו כותב כאן",
-      "content":"<p>בדיקה בדיקה<\/p>\r\n",
-      "author":1,
-      "lastchange":1452770880
-    },
-    {
-      "id":19,
-      "title":"מבחן מתכונת בלשון",
-      "content":"<p>ללעחחכהיבי<\/p>\r\n",
-      "author":2,
-      "lastchange":1451114220
-    },
-    {
-      "id":26,
-      "title":"טקס רבין",
-      "content":"<p>מחר לבוא עם חולצות לבנות<\/p>\r\n",
-      "author":1,
-      "lastchange":1447837860
-    },
-    {
-      "id":12,
-      "title":"הצגת חובה 3\/6\/15 ''גבירטיג''",
-      "content":"<p><span style=\"color:rgb(0, 0, 0)\">שלום שכבה יקרה.<\/span><br \/>\r\n<span style=\"color:rgb(0, 0, 0)\">אני מזמינה אתכם להצגה<strong>&nbsp;<\/strong><\/span><strong>&quot;גוירטיג&quot;<\/strong><span style=\"color:rgb(0, 0, 0)\"><strong>&nbsp;<\/strong>שתתקיים&nbsp;<\/span>בתאטרון ראסל בר&quot;ג ביום ד&#39; 3\/6\/15 בשעה 9:15<span style=\"color:rgb(0, 0, 0)\">&nbsp;.<\/span><br \/>\r\nההצגה היא חובה והיא מיועדת לכלל השכבה<span style=\"color:rgb(0, 0, 0)\">. <strong>ההצגה היא חלק מלימודי השואה ושיעורי ההיסטוריה<\/strong>&nbsp;ולכן לתלמידי פולין זהו חלק מההכנה למסע ולפיכך <strong>נוכחותכם נדרשת פי כמה<\/strong>.<\/span><br \/>\r\nההצגה <strong>כשעה וחצי ולאחריה משוחררים הביתה<\/strong><span style=\"color:rgb(0, 0, 0)\">.<\/span><br \/>\r\n<span style=\"color:rgb(0, 0, 0)\">חוזרת ומדגישה :<strong>נוכחותכם נדרשת<\/strong>. <strong>הגעה עם תלבושת ביה&quot;ס ובלבוש הולם!!<\/strong><\/span><br \/>\r\n<span style=\"color:rgb(0, 0, 0)\">השנה עוד לא הסתיימה ויש לכם חובת נוכחות בפעילות ביה&quot;ס.<\/span><br \/>\r\n<span style=\"color:rgb(0, 0, 0)\">לילך.<\/span><\/p>\r\n",
-      "author":2,
-      "lastchange":1442820240
-    },
-    {
-      "id":10,
-      "title":"תחרות הסייבר לנוער SKILLZ הארצית",
-      "content":"<p>בדיקה אם אפשר עברית ואנגלית בכותרת<\/p>\r\n",
-      "author":1,
-      "lastchange":1431383340
-    },
-    {
-      "id":9,
-      "title":"עדכונים לקורסי התגבור בלשון",
-      "content":"<p><span style=\"color:rgb(0, 0, 0); font-size:12px\">להלן תאריכי המפגשים לשתי הקבוצות בלשון יא עם המורה ליטל שבו:<\/span><br \/>\r\n<strong>קב' מס' 1 <\/strong><span style=\"color:rgb(0, 0, 0); font-size:12px\">שהחלה לפני שבוע מפגש ראשון תיפגש בימים הבאים<\/span><strong>:26\/4 , 3\/5  ,10\/5  ,17\/5,   31\/5  <\/strong><span style=\"color:rgb(0, 0, 0); font-size:12px\">.<\/span><br \/>\r\n<span style=\"color:rgb(0, 0, 0); font-size:12px\">  סה\"כ 6 מפגשים <\/span><strong>בימי א' בין השעות :00 16:00-19 ב<\/strong><span style=\"color:rgb(0, 0, 0); font-size:12px\">חד<\/span><strong>ר 3 בנין יב<\/strong><span style=\"color:rgb(0, 0, 0); font-size:12px\"> (קומה א')<\/span><br \/>\r\n<br \/>\r\n<strong>קב' מס' 2<\/strong><span style=\"color:rgb(0, 0, 0); font-size:12px\"> :המפגש הראשון עם ליטל יחול <\/span><strong>ביום ג' 28\/4 <\/strong><span style=\"color:rgb(0, 0, 0); font-size:12px\"> הקרוב ב<\/span><strong>שעות 16:00-19:00<\/strong><span style=\"color:rgb(0, 0, 0); font-size:12px\"> לחכות ליד חדר המורים לליטל.<\/span><br \/>\r\n<span style=\"color:rgb(0, 0, 0); font-size:12px\">יתר המפגשים בימים הבאי<\/span><strong>ם: 5\/5 יום ג 16:00-19:00,<\/strong><span style=\"color:rgb(0, 0, 0); font-size:12px\"> <\/span><strong> 22\/5 יום ו' 8:00-1:00 <\/strong><span style=\"color:rgb(0, 0, 0); font-size:12px\"> (בשעות של מתמט' לאור סיום לימודי מתמטיקה לאחר הבגרות ב20\/5<\/span><strong>),29\/5 יום ו' 8:00-11:00<\/strong><span style=\"color:rgb(0, 0, 0); font-size:12px\">, <\/span><strong> 3\/6  יום ד' 16:00-19,    יום ו' 8:00-11:00.   סה\"כ 6 מפגשים.<br \/>\r\n<br \/>\r\nתאריך מגן בלשון 1\/6\/15.    פרסום  שמות התלמידים עם תאריכים נמצא  גם בלוחות מודעות שכבת יא.<br \/>\r\n<br \/>\r\nבהצלחה לנרשמים. לילך<\/strong><\/p>\r\n",
-      "author":1,
-      "lastchange":1431383160
+      "clazz": 12,
+      "hour": 1,
+      "content": "פעילות חברתית"
     }
   ],
   "tests":[
     {
-      "date":1452204000,
-      "content":"מועד ב' מתמטיקה"
+      "date": 1462050000000,
+      "content": "מתכונת מתמטיקה"
     },
     {
-      "date":1452376800,
-      "content":"מועדי ב'"
+      "date": 1462309200000,
+      "content": "מתכונת אנגלית"
     },
     {
-      "date":1452549600,
-      "content":"מועדי ב'"
-    },
-    {
-      "date":1452722400,
-      "content":"מועדי ב'"
-    },
-    {
-      "date":1452981600,
-      "content":"מועדי ב'\/אוהל שיר"
-    },
-    {
-      "date":1454536800,
-      "content":"ברק גונן"
-    },
-    {
-      "date":1454623200,
+      "date": 1462654800000,
       "content":"מתמטיקה"
     },
     {
-      "date":1454882400,
-      "content":"תעבורה"
+      "date": 1462741200000,
+      "content": "מתכונת בקרת מערכות הנדסיות 3 יח\"ל"
     },
     {
-      "date":1455400800,
-      "content":"לשון"
-    },
-    {
-      "date":1455746400,
+      "date": 1462827600000,
       "content":"אנגלית"
     },
     {
-      "date":1456351200,
-      "content":"אזרחות"
-    },
-    {
-      "date":1456783200,
-      "content":"היסטוריה"
-    },
-    {
-      "date":1457042400,
-      "content":"מגמות"
-    },
-    {
-      "date":1457388000,
-      "content":"ספרות"
-    },
-    {
-      "date":1457560800,
-      "content":"מקבצים"
-    },
-    {
-      "date":1457992800,
-      "content":"תנ\"ך"
-    },
-    {
-      "date":1458252000,
-      "content":"מתמטיקה"
-    },
-    {
-      "date":1459026000,
-      "content":"אנגלית"
-    },
-    {
-      "date":1459285200,
-      "content":"מתכונת יחידה חמישית מקבץ תנך"
-    },
-    {
-      "date":1459630800,
-      "content":"לשון"
-    },
-    {
-      "date":1459976400,
-      "content":"מתכונת תנ\"ך"
-    },
-    {
-      "date":1460408400,
-      "content":"בגרות יחידה חמישית מקבץ תנך\/מתכונת מדעי המחשב"
-    },
-    {
-      "date":1462050000,
-      "content":"מתכונת מתמטיקה"
-    },
-    {
-      "date":1462136400,
-      "content":"מתוקשב תנ\"ך"
-    },
-    {
-      "date":1462309200,
-      "content":"מתכונת אנגלית"
-    },
-    {
-      "date":1462741200,
-      "content":"מבחן מסכם תעבורה"
-    },
-    {
-      "date":1463259600,
+      "date": 1463259600000,
       "content":"בגרות תנ\"ך"
     },
     {
-      "date":1463432400,
+      "date": 1463432400000,
       "content":"בגרות מדעי המחשב "
     },
     {
-      "date":1463605200,
+      "date": 1463605200000,
       "content":"בגרות אנגלית"
     },
     {
-      "date":1463950800,
+      "date": 1463950800000,
       "content":"בגרות מתמטיקה"
     },
     {
-      "date":1464469200,
+      "date": 1464469200000,
       "content":"מתכונת לשון"
     },
     {
-      "date":1465074000,
+      "date": 1464728400000,
+      "content": "מתכונת בקרת מערכות הנדסיות הערכה פנימית\/בגרות מקבץ ספרות"
+    },
+    {
+      "date": 1465074000000,
       "content":"מתכונת הסטוריה"
     },
     {
-      "date":1465419600,
-      "content":"מתכונת פסיכולגיה כלכלה  מבחן מסכם פיסיקה"
+      "date": 1465419600000,
+      "content": "מתכונת פסיכולגיה כלכלה  מבחן מסכם כימיה"
     },
     {
-      "date":1466024400,
+      "date": 1465506000000,
+      "content": "מסכם פיסיקה כימיה"
+    },
+    {
+      "date": 1466024400000,
       "content":"בגרות לשון"
     },
     {
-      "date":1466629200,
+      "date": 1466629200000,
       "content":"בגרות הסטוריה"
     },
     {
-      "date":1467234000,
-      "content":"בגרות פסיכולוגיה כלכלה\/תרבות המוסיקה"
+      "date": 1466974800000,
+      "content": "בגרות בקרת מערכות הנדסיות  הערכה פנימית"
     },
     {
-      "date":1467579600,
-      "content":"בגרות אנגלית מועד ב'"
-    },
-    {
-      "date":1468184400,
-      "content":"בגרות מתמטיקה מועד ב'"
+      "date": 1467234000000,
+      "content": "בגרות פסיכולוגיה כלכלה\/תרבות המוסיקה"
     }
   ],
   "timetable":[
@@ -358,12 +119,6 @@
       "hour":1,
       "name":"כימ,ספר,תנ\",ערב,צרפ,",
       "teacher":"חמד,דרו,מזל,שחף,אבע,"
-    },
-    {
-      "day":2,
-      "hour":1,
-      "name":"מתמטיקה",
-      "teacher":"טיאנו שרית"
     },
     {
       "day":3,
@@ -396,12 +151,6 @@
       "teacher":"חמד,דרו,מזל,שחף,אבע,"
     },
     {
-      "day":2,
-      "hour":2,
-      "name":"מתמטיקה",
-      "teacher":"טיאנו שרית"
-    },
-    {
       "day":3,
       "hour":2,
       "name":"אנגלית",
@@ -424,12 +173,6 @@
       "hour":2,
       "name":"גיא,פיס,מע',כימ,פסי,",
       "teacher":"זיו,גור,קנו,גבר,קרפ,"
-    },
-    {
-      "day":1,
-      "hour":3,
-      "name":"מתמטיקה",
-      "teacher":"טיאנו שרית"
     },
     {
       "day":2,
@@ -456,12 +199,6 @@
       "teacher":"דרורי נס"
     },
     {
-      "day":6,
-      "hour":3,
-      "name":"מתמטיקה",
-      "teacher":"טיאנו שרית"
-    },
-    {
       "day":1,
       "hour":4,
       "name":"לשון",
@@ -492,10 +229,10 @@
       "teacher":"שבו ליטל"
     },
     {
-      "day":6,
-      "hour":4,
-      "name":"מתמטיקה",
-      "teacher":"טיאנו שרית"
+      "day": 1,
+      "hour": 5,
+      "name": "חנ\"ג בנים,חנ\"ג בנות",
+      "teacher": "ימפולסקי ל,שרוני רהב"
     },
     {
       "day":2,
@@ -520,12 +257,6 @@
       "hour":5,
       "name":"לשון",
       "teacher":"שבו ליטל"
-    },
-    {
-      "day":6,
-      "hour":5,
-      "name":"מתמטיקה",
-      "teacher":"טיאנו שרית"
     },
     {
       "day":1,
@@ -680,8 +411,8 @@
     {
       "day":2,
       "hour":10,
-      "name":"ערבי,רובו,אינט,רשתו",
-      "teacher":"בכר,הוד,בן-,חיי,ברק"
+      "name": "ערב,רוב,סיי,אינ,רשת",
+      "teacher": "בכר,הוד,בן-,פרו,חיי,"
     },
     {
       "day":3,
@@ -709,9 +440,111 @@
     },
     {
       "day":1,
+      "hour": 11,
+      "name": "",
+      "teacher": ""
+    },
+    {
+      "day": 2,
+      "hour": 11,
+      "name": "רובוט,סייבר,רשתות",
+      "teacher": "הוד,בן-,פרו,ברק,עבו"
+    },
+    {
+      "day": 3,
+      "hour": 11,
+      "name": "",
+      "teacher": ""
+    },
+    {
+      "day": 4,
+      "hour": 11,
+      "name": "מע' מחשבים",
+      "teacher": "חיימוביץ אלון"
+    },
+    {
+      "day": 5,
+      "hour": 11,
+      "name": "רובוטיקה",
+      "teacher": "הוד בני"
+    },
+    {
+      "day": 6,
+      "hour": 11,
+      "name": "",
+      "teacher": ""
+    },
+    {
+      "day": 1,
+      "hour": 12,
+      "name": "",
+      "teacher": ""
+    },
+    {
+      "day": 2,
+      "hour": 12,
+      "name": "סייבר",
+      "teacher": "עבודי מני"
+    },
+    {
+      "day": 3,
+      "hour": 12,
+      "name": "",
+      "teacher": ""
+    },
+    {
+      "day": 4,
+      "hour": 12,
+      "name": "",
+      "teacher": ""
+    },
+    {
+      "day": 5,
+      "hour": 12,
+      "name": "",
+      "teacher": ""
+    },
+    {
+      "day": 6,
+      "hour": 12,
+      "name": "",
+      "teacher": ""
+    },
+    {
+      "day": 6,
+      "hour": 3,
+      "name": "מתמטיקה",
+      "teacher": "טיאנו שרית"
+    },
+    {
+      "day": 6,
+      "hour": 4,
+      "name": "מתמטיקה",
+      "teacher": "טיאנו שרית"
+    },
+    {
+      "day": 6,
       "hour":5,
-      "name":"חנ''ג בנים,חנ''ג בנות",
-      "teacher":"ימפולסקי ל,שרוני רהב"
+      "name": "מתמטיקה",
+      "teacher": "טיאנו שרית"
+    },
+    {
+      "day": 1,
+      "hour": 3,
+      "name": "מתמטיקה",
+      "teacher": "טיאנו שרית"
+    },
+    {
+      "day": 2,
+      "hour": 1,
+      "name": "מתמטיקה",
+      "teacher": "טיאנו שרית"
+    },
+    {
+      "day": 2,
+      "hour": 2,
+      "name": "מתמטיקה",
+      "teacher": "טיאנו שרית"
     }
   ]
 }

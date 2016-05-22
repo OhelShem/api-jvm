@@ -38,22 +38,22 @@ class ApiParserTest : BaseTestCase() {
             fail("Exception should not be thrown from the method")
         }
         data.success {
-            assertEquals(1454861839L, it.serverUpdateDate)
+            assertEquals(1463914758000, it.serverUpdateDate)
             assertNotNull(it.userData).apply {
-                assertEquals(42, id)
+                assertEquals(5, id)
                 assertEquals("123456789", identity)
                 assertEquals("יואב", privateName)
                 assertEquals("שטרנברג", familyName)
                 assertEquals(1, gender)
-                assertEquals(4, clazz)
-                assertEquals(11, layer)
                 assertEquals("522324577", phone)
                 assertEquals("1999-05-18", birthday)
-                assertEquals(email, "yoav.sternberg@gmail.com")
+                assertEquals("yoav.sternberg@gmail.com", email)
+                assertEquals(Role.Admin, role)
             }
-            assertEquals(1454796000L, it.changesDate)
-            assertNotNull(it.changes).apply {
-                assertEquals(24, size)
+            assertEquals(1463864400000, it.changesDate)
+            assertNotNull(it.data as Api.ExtraData.Student).apply {
+                assertNotNull(changes)
+                assertEquals(4, changes!!.size)
             }
         }
     }

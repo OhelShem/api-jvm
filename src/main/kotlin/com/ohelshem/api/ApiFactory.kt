@@ -16,16 +16,16 @@
  */
 package com.ohelshem.api
 
-import com.ohelshem.api.controller.declaration.ApiProvider
+import com.ohelshem.api.controller.declaration.ApiEngine
 import com.ohelshem.api.controller.declaration.ColorProvider
+import com.ohelshem.api.controller.implementation.ApiEngineImpl
 import com.ohelshem.api.controller.implementation.ApiParserImpl
-import com.ohelshem.api.controller.implementation.ApiProviderImpl
 import com.ohelshem.api.controller.implementation.ColorProviderImpl
 import com.ohelshem.api.controller.implementation.RequestsControllerImpl
 
 object ApiFactory {
     @JvmStatic
-    fun create(colorProvider: ColorProvider): ApiProvider = ApiProviderImpl(ApiParserImpl(colorProvider), RequestsControllerImpl)
+    fun create(colorProvider: ColorProvider): ApiEngine = ApiEngineImpl(ApiParserImpl(colorProvider), RequestsControllerImpl)
 
     @JvmStatic
     fun defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, String>>, timetableColors: IntArray) =

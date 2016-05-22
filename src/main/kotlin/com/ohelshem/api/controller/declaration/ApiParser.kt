@@ -15,11 +15,13 @@
  *
  */
 
-package com.ohelshem.api.model
+package com.ohelshem.api.controller.declaration
 
-/**
- * Representing the data needed for login.
- *
- * The current auth system requires an [id] and a [password].
- */
-data class AuthData(val id: String, val password: String)
+import com.github.kittinunf.result.Result
+import com.ohelshem.api.Api
+
+interface ApiParser {
+    fun parse(data: String): Result<Api.Response, ApiException>
+
+    class ApiException(val error: Int) : Exception()
+}

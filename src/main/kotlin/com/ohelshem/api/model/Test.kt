@@ -17,9 +17,29 @@
 
 package com.ohelshem.api.model
 
-/**
- * Represents a change from the changes table.
- * A change belongs to a [clazz], at a specific [hour].
- * A change has a [content] and a [color].
- */
-data class Change(val clazz: Int, val hour: Int, val content: String, val color: Int)
+
+open class Test(val date: Long, val content: String) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other?.javaClass != javaClass) return false
+
+        other as Test
+
+        if (date != other.date) return false
+        if (content != other.content) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = date.hashCode()
+        result = 31 * result + content.hashCode()
+        return result
+    }
+
+    override fun toString(): String {
+        return "Test(date=$date, content='$content')"
+    }
+
+
+}

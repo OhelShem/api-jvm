@@ -22,7 +22,7 @@ repositories {
 **Step 2. Add the dependency in the form**
 ```groovy
 dependencies {
-	    compile 'com.ohelshem:api:0.2.5'
+	    compile 'com.ohelshem:api:0.3.0'
 	}
 ```
 
@@ -50,29 +50,24 @@ For the colors used by the Android application check [this](https://github.com/O
 First, create the provider:
 
 ```java
-ApiProvider apiProvider = ApiFactory.create(colorProvider)
+ApiEngine apiEngine = ApiFactory.create(colorProvider)
 ```
 
-Second, call the `update()` method:
+Second, call the `call()` method:
 
 ```java
-apiProvider.update(new AuthData(userId, userPassword), lastUpdateTime, new ApiCallback() {
-    @Override
-       protected void onResult(Result<ApiParser.ParsedData, Exception> result) {
-                                                                       
-       }
+apiProvider.call(userId, userPassword, lastUpdateTime, new Api.Callback() {
+   @Override
+   public void onSuccess(@NotNull Api.Response response) {
+       // response.data can be Student class, or Teacher class.
+   }
+
+   @Override
+   public void onFailure(@NotNull Exception exception) {
+
+   }
 });
 ```
-
-The [Result library](https://github.com/kittinunf/Result) is a tiny framework for modelling success/failure of operations.
-
-```java
-ParsedData data = result.get() // null if error
-Exception exception = result.component2() // null if valid
-
-// Looks much better in Kotlin. Sorry :)
-```
-
 
 ## Android support
 In order to use this with Android, you need to add a gradle dependency for `fuel-android` module.
@@ -83,7 +78,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.kittinunf.fuel:fuel-android:1.1.1'
+    compile 'com.github.kittinunf.fuel:fuel-android:1.3.0'
 }
 ```
 
@@ -93,18 +88,6 @@ This library is based on a library called [Fuel](https://github.com/kittinunf/Fu
 This library was written fully in [Kotlin](https://kotlinlang.org/). Kotlin is Statically typed programming language
 for the JVM, Android and the browser with 100% interoperable with Java™.
 
-```kotlin
-val apiProvider = ApiFactory.create(colorProvider)
-
-apiProvider(AuthData(userId, userPassword), lastUpdateTime) { result ->
-    result.success {
-        // Only called on success
-    }
-    result.failure {
-        // only called on failure
-    }
-}
-```
 
 # License
 
