@@ -17,40 +17,16 @@
 
 package com.ohelshem.api.util
 
-import com.ohelshem.api.controller.declaration.Logger
-import com.ohelshem.api.logger
 import org.junit.Before
 
 abstract class BaseTestCase {
     val colorProvider = WhiteColorProvider
     @Before
-    final fun setUp() {
-        registerLoggerAndDefaults()
+    fun setUp() {
         setup()
     }
 
     open fun setup() {
 
     }
-
-    fun registerLoggerAndDefaults() {
-        logger = TestLogger
-    }
-
-    object TestLogger : Logger {
-        override fun log(data: String) {
-            println(data)
-        }
-
-        override fun log(data: String, exception: Exception) {
-            println(data)
-            exception.printStackTrace()
-        }
-
-        override fun log(exception: Exception) {
-            exception.printStackTrace()
-        }
-
-    }
-
 }

@@ -24,8 +24,8 @@ import com.ohelshem.api.Api
 import com.ohelshem.api.Api.ExtraData
 import com.ohelshem.api.controller.declaration.ApiParser
 import com.ohelshem.api.controller.declaration.ColorProvider
-import com.ohelshem.api.logger
 import com.ohelshem.api.model.*
+import mu.KLogging
 import java.util.*
 
 class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
@@ -66,7 +66,7 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
                 return Result.error(ApiParser.ApiException(errorCode))
             }
         } catch (e: Exception) {
-            logger.log(e)
+            logger.error(e) { "Error parsing the response." }
             return Result.error(ApiParser.ApiException(4))
         }
     }
@@ -100,7 +100,7 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
                         }
                     }
                 }
-                @Suppress("CAST_NEVER_SUCCEEDS")
+                @Suppress("UNCHECKED_CAST")
                 return timetable as Array<Array<Hour>>
             } else return null
         } else return null
@@ -165,7 +165,7 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
     }
 
 
-    companion object {
+    companion object : KLogging() {
         val MaxHoursADay = 11
 
         private val JsonElement.arrayOrNull: JsonArray?

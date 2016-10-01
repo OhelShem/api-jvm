@@ -10,7 +10,7 @@ import com.ohelshem.api.controller.declaration.RequestsController
 
 
 class ApiEngineImpl(override val parser: ApiParser, private val requestsController: RequestsController) : ApiEngine {
-    override val apiVersion: String = "1.0.0"
+    override val apiVersion: String = "2.0.0"
 
     override fun call(request: Api.Request, callback: Api.Callback) {
         requestsController.post(ApiEndpoint, headers(request.identity, request.password, request.lastUpdateTime)) { response, result ->
