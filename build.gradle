@@ -45,7 +45,7 @@ publish {
     desc = 'The official api for JVM platform'
     groupId = 'com.ohelshem'
     licences = ['Apache-2.0']
-    publishVersion = '0.4.0'
+    publishVersion = '0.4.1'
     website = 'https://github.com/OhelShem/api-jvm'
 }
 
