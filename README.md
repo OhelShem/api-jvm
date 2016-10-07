@@ -78,7 +78,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.kittinunf.fuel:fuel-android:1.3.0'
+    compile 'com.github.kittinunf.fuel:fuel-android:1.3.1'
 }
 ```
 
