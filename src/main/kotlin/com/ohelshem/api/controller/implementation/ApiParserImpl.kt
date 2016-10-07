@@ -107,11 +107,11 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
     }
 
     private fun JsonObject.changes(): List<Change>? {
-        return obj["changes"].let { if (it.isJsonNull) null else gson.fromJson<ArrayList<Change>>(it) }
+        return obj["changes"].let { if (it.isJsonNull) null else if (it.isJsonObject) emptyList() else gson.fromJson<ArrayList<Change>>(it) }
     }
 
     private fun JsonObject.tests(): List<Test>? {
-        return obj["tests"].let { if (it.isJsonNull) null else gson.fromJson<ArrayList<Test>>(it) }
+        return obj["tests"].let { if (it.isJsonNull) null else if (it.isJsonObject) emptyList() else gson.fromJson<ArrayList<Test>>(it) }
     }
 
     private fun JsonObject.schoolTimetable(): List<SchoolHour>? {
@@ -149,15 +149,15 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
     }
 
     private fun JsonObject.schoolTests(): List<SchoolTest>? {
-        return obj["tests"].let { if (it.isJsonNull) null else gson.fromJson<ArrayList<SchoolTest>>(it) }
+        return obj["tests"].let { if (it.isJsonNull) null else if (it.isJsonObject) emptyList() else gson.fromJson<ArrayList<SchoolTest>>(it) }
     }
 
     private fun JsonObject.schoolChanges(): List<SchoolChange>? {
-        return obj["changes"].let { if (it.isJsonNull) null else gson.fromJson<ArrayList<SchoolChange>>(it) }
+        return obj["changes"].let { if (it.isJsonNull) null else if (it.isJsonObject) emptyList() else gson.fromJson<ArrayList<SchoolChange>>(it) }
     }
 
     private fun JsonObject.classes(): List<ClassInfo>? {
-        return obj["classes"].let { if (it.isJsonNull) null else gson.fromJson<ArrayList<ClassInfo>>(it) }
+        return obj["classes"].let { if (it.isJsonNull) null else if (it.isJsonObject) emptyList() else gson.fromJson<ArrayList<ClassInfo>>(it) }
     }
 
     private fun JsonObject.primaryClass(): ClassInfo? {
@@ -169,7 +169,7 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
         val MaxHoursADay = 11
 
         private val JsonElement.arrayOrNull: JsonArray?
-            get() = if (isJsonNull) null else array
+            get() = if (isJsonNull) null else if (isJsonObject) JsonArray() else array
 
         class MutableResponse(var serverUpdateDate: Long, var changesDate: Long, var userData: UserData, var data: Api.ExtraData? = null,
                               var timetable: Array<Array<Hour>>? = null) {
