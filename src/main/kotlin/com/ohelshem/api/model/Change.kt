@@ -25,17 +25,7 @@ package com.ohelshem.api.model
 open class Change(val clazz: Int, val hour: Int, val content: String, val color: Int) {
 
     override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other?.javaClass != javaClass) return false
-
-        other as Change
-
-        if (clazz != other.clazz) return false
-        if (hour != other.hour) return false
-        if (content != other.content) return false
-        if (color != other.color) return false
-
-        return true
+        return other is Change && clazz == other.clazz && hour == other.hour && content == other.content && color == other.color
     }
 
     override fun hashCode(): Int {

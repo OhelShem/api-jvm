@@ -20,15 +20,7 @@ package com.ohelshem.api.model
 
 open class Test(val date: Long, val content: String) {
     override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other?.javaClass != javaClass) return false
-
-        other as Test
-
-        if (date != other.date) return false
-        if (content != other.content) return false
-
-        return true
+        return other is Test && date == other.date && content == other.content
     }
 
     override fun hashCode(): Int {

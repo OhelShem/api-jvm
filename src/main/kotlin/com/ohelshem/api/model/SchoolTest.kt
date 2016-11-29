@@ -4,16 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 class SchoolTest(override val layer: Int, @SerializedName("class") override val clazz: Int, date: Long, content: String) : Test(date, content), SchoolModel {
     override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other?.javaClass != javaClass) return false
-        if (!super.equals(other)) return false
-
-        other as SchoolTest
-
-        if (layer != other.layer) return false
-        if (clazz != other.clazz) return false
-
-        return true
+        return other is SchoolTest && super.equals(other) && layer == other.layer && clazz == other.clazz
     }
 
     override fun hashCode(): Int {

@@ -6,18 +6,7 @@ class SchoolHour(override val layer: Int, @SerializedName("class") override val 
                  teacher: String = "", color: Int = 0) : Hour(name, teacher, color), SchoolModel {
 
     override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other?.javaClass != javaClass) return false
-        if (!super.equals(other)) return false
-
-        other as SchoolHour
-
-        if (layer != other.layer) return false
-        if (clazz != other.clazz) return false
-        if (day != other.day) return false
-        if (hour != other.hour) return false
-
-        return true
+        return other is SchoolHour && super.equals(other) && layer == other.layer && clazz == other.clazz && day == other.day && hour == other.hour
     }
 
     override fun hashCode(): Int {
