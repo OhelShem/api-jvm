@@ -2,9 +2,8 @@ package com.ohelshem.api.model
 
 import com.google.gson.annotations.SerializedName
 
-
-class SchoolHour(val layer: Int, @SerializedName("class") val clazz: Int, val day: Int, val hour: Int, name: String = "",
-                 teacher: String = "", color: Int = 0) : Hour(name, teacher, color) {
+class SchoolHour(override val layer: Int, @SerializedName("class") override val clazz: Int, val day: Int, val hour: Int, name: String = "",
+                 teacher: String = "", color: Int = 0) : Hour(name, teacher, color), SchoolModel {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

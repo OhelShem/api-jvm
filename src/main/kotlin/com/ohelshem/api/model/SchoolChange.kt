@@ -17,7 +17,7 @@
 
 package com.ohelshem.api.model
 
-class SchoolChange(val layer: Int, clazz: Int, hour: Int, content: String, color: Int) : Change(clazz, hour, content, color) {
+class SchoolChange(override val layer: Int, clazz: Int, hour: Int, content: String, color: Int) : Change(clazz, hour, content, color), SchoolModel {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other?.javaClass != javaClass) return false

@@ -2,7 +2,7 @@ package com.ohelshem.api.model
 
 import com.google.gson.annotations.SerializedName
 
-class SchoolTest(val layer: Int, @SerializedName("class") val clazz: Int, date: Long, content: String) : Test(date, content) {
+class SchoolTest(override val layer: Int, @SerializedName("class") override val clazz: Int, date: Long, content: String) : Test(date, content), SchoolModel {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other?.javaClass != javaClass) return false
