@@ -100,6 +100,12 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
                         }
                     }
                 }
+                val empty = Hour.Empty
+                timetable.forEach { day ->
+                    day.forEachIndexed { i, hour ->
+                        if (hour == null) day[i] = empty
+                    }
+                }
                 @Suppress("UNCHECKED_CAST")
                 return timetable as Array<Array<Hour>>
             } else return null
@@ -144,7 +150,6 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
                         }
                     }
                 }
-                @Suppress("CAST_NEVER_SUCCEEDS")
                 return timetable
             } else return null
         } else return null

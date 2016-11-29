@@ -49,4 +49,7 @@ open class Hour(val name: String = "", val teacher: String = "", val color: Int 
         result += 31 * result + color
         return result
     }
+    companion object {
+        val Empty = Hour()
+    }
 }
