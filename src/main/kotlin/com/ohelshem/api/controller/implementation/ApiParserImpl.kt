@@ -116,7 +116,7 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
 
     private fun JsonObject.schoolTimetable(): List<SchoolHour>? {
         if ("schoolTimetable" in obj) {
-            val schoolTimetable = obj["timetable"].arrayOrNull
+            val schoolTimetable = obj["schoolTimetable"].arrayOrNull
             if (schoolTimetable != null) {
                 val lessons = HashMap<String, Int>(100)
                 var c = 0
@@ -125,20 +125,22 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
                 schoolTimetable.forEachIndexed { index, it ->
                     val layer = it["layer"].int
                     val clazz = it["class"].int
-                    val lesson = it["name"].string
-                    val teacher = it["teacher"].string
-                    val day = it["day"].int - 1
-                    val hour = it["hour"].int - 1
-                    var color = lessons[lesson]
-                    if (hour < MaxHoursADay) {
-                        if (color != null)
-                            timetable[index] = SchoolHour(layer, clazz, day, hour, lesson, teacher, color)
-                        else {
-                            c++
-                            if (c == timetableColors.size) c = 0
-                            color = timetableColors[c]
-                            timetable[index] = SchoolHour(layer, clazz, day, hour, lesson, teacher, color)
-                            lessons[lesson] = color
+                    if (layer != 0 && clazz != 0) {
+                        val lesson = it["name"].string
+                        val teacher = it["teacher"].string
+                        val day = it["day"].int - 1
+                        val hour = it["hour"].int - 1
+                        var color = lessons[lesson]
+                        if (hour < MaxHoursADay) {
+                            if (color != null)
+                                timetable += SchoolHour(layer, clazz, day, hour, lesson, teacher, color)
+                            else {
+                                c++
+                                if (c == timetableColors.size) c = 0
+                                color = timetableColors[c]
+                                timetable += SchoolHour(layer, clazz, day, hour, lesson, teacher, color)
+                                lessons[lesson] = color
+                            }
                         }
                     }
                 }
@@ -149,7 +151,11 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
     }
 
     private fun JsonObject.schoolTests(): List<SchoolTest>? {
-        return obj["tests"].let { if (it.isJsonNull) null else if (it.isJsonObject) emptyList() else gson.fromJson<ArrayList<SchoolTest>>(it) }
+        return obj["tests"].let {
+            if (it.isJsonNull) null
+            else if (it.isJsonObject) emptyList()
+            else gson.fromJson<ArrayList<SchoolTest>>(it).filter { it.clazz != 0 && it.layer != 0 }
+        }
     }
 
     private fun JsonObject.schoolChanges(): List<SchoolChange>? {
