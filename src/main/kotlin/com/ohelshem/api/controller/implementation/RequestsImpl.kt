@@ -17,22 +17,24 @@
 
 package com.ohelshem.api.controller.implementation
 
-import com.github.kittinunf.fuel.core.Response
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.result.Result
-import com.ohelshem.api.controller.declaration.RequestsController
+import com.ohelshem.api.controller.declaration.Requests
+import com.ohelshem.api.controller.declaration.Requests.Response
 
-object RequestsControllerImpl : RequestsController {
-    override fun get(url: String, callback: (Response, Result<String, Exception>) -> Unit) {
-        url.httpGet().timeout(RequestsController.DefaultTimeout).responseString { request, response, result ->
-            callback(response, result)
-        }
+object RequestsImpl : Requests {
+    private const val DefaultTimeout = 5000
+
+    override suspend fun get(url: String): Pair<Response, Result<String, Exception>> {
+        val (_, response, result) = url.httpGet().timeout(DefaultTimeout).responseString()
+
+        return Response(response.httpStatusCode, response.httpResponseHeaders) to result
     }
 
-    override fun post(url: String, body: String?, callback: (Response, Result<String, Exception>) -> Unit) {
-        url.httpPost().timeout(RequestsController.DefaultTimeout).apply { if (body != null) body(body) }.responseString { request, response, result ->
-            callback(response, result)
-        }
+    override suspend fun post(url: String, body: String?): Pair<Response, Result<String, Exception>> {
+        val (_, response, result) = url.httpPost().timeout(DefaultTimeout).apply { if (body != null) body(body) }.responseString()
+
+        return Response(response.httpStatusCode, response.httpResponseHeaders) to result
     }
 }

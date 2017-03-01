@@ -25,7 +25,6 @@ import com.ohelshem.api.Api.ExtraData
 import com.ohelshem.api.controller.declaration.ApiParser
 import com.ohelshem.api.controller.declaration.ColorProvider
 import com.ohelshem.api.model.*
-import mu.KLogging
 import java.util.*
 
 class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
@@ -66,7 +65,6 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
                 return Result.error(ApiParser.ApiException(errorCode))
             }
         } catch (e: Exception) {
-            logger.error(e) { "Error parsing the response." }
             return Result.error(ApiParser.ApiException(4))
         }
     }
@@ -128,7 +126,7 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
                 var c = 0
                 val timetableColors = colorProvider.timetableColors
                 val timetable = ArrayList<SchoolHour>(schoolTimetable.size())
-                schoolTimetable.forEachIndexed { index, it ->
+                schoolTimetable.forEach {
                     val layer = it["layer"].int
                     val clazz = it["class"].int
                     if (layer != 0 && clazz != 0) {
@@ -176,7 +174,7 @@ class ApiParserImpl(private val colorProvider: ColorProvider) : ApiParser {
     }
 
 
-    companion object : KLogging() {
+    companion object {
         val MaxHoursADay = 11
 
         private val JsonElement.arrayOrNull: JsonArray?

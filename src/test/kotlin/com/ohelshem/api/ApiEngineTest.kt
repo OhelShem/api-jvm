@@ -21,6 +21,7 @@ import com.github.kittinunf.fuel.Fuel
 import com.ohelshem.api.controller.declaration.ApiEngine
 import com.ohelshem.api.util.BaseTestCase
 import com.ohelshem.api.util.getData
+import kotlinx.coroutines.experimental.runBlocking
 import kotlin.test.assertNotEquals
 import kotlin.test.assertNotNull
 import kotlin.test.fail
@@ -39,17 +40,15 @@ class ApiEngineTest : BaseTestCase() {
 
         }
         val (id, password) = "credentials.txt".getData().split(System.lineSeparator())
-        apiEngine.call(id, password, 0, object : Api.Callback {
-            override fun onSuccess(response: Api.Response) {
+        runBlocking {
+            val (response, exception) = apiEngine.call(id, password, 0)
+            if (response != null) {
                 assertNotNull(response.userData)
                 assertNotEquals(0, response.changesDate)
                 assertNotEquals(0, response.serverUpdateDate)
-            }
-
-            override fun onFailure(exception: Exception) {
+            } else {
                 fail("should not fail with $exception")
             }
-
-        })
+        }
     }
 }

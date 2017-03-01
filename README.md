@@ -1,4 +1,4 @@
-[![Kotlin](https://img.shields.io/badge/kotlin-1.0.5-blue.svg)](http://kotlinlang.org) [![License Apache](https://img.shields.io/badge/License-Apache%202.0-red.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.1.0-blue.svg)](http://kotlinlang.org) [![License Apache](https://img.shields.io/badge/License-Apache%202.0-red.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 Ohel Shem API for JVM
 =====================
@@ -22,7 +22,7 @@ repositories {
 **Step 2. Add the dependency in the form**
 ```groovy
 dependencies {
-	    compile 'com.ohelshem:api:0.4.3'
+	    compile 'com.ohelshem:api:0.5.0'
 	}
 ```
 
@@ -39,7 +39,7 @@ to set its color.
 The API provide a default color provider, with receives a default Color and a mapping between 
 name and a color. It will use `Contains` with the String.
 
-```java
+```kotlin
 ApiFactory.defaultColorProvider(defaultColor: Int, filters: List<Pair<Int, String>> | Map<String, Int>, timetableColors: Int[])
 
 ```
@@ -49,24 +49,15 @@ For the colors used by the Android application check [this](https://github.com/O
 ## Usage
 First, create the provider:
 
-```java
-ApiEngine apiEngine = ApiFactory.create(colorProvider)
+```kotlin
+val apiEngine = ApiFactory.create(colorProvider)
 ```
 
 Second, call the `call()` method:
 
-```java
-apiProvider.call(userId, userPassword, lastUpdateTime, new Api.Callback() {
-   @Override
-   public void onSuccess(@NotNull Api.Response response) {
-       // response.data can be Student class, or Teacher class.
-   }
-
-   @Override
-   public void onFailure(@NotNull Exception exception) {
-
-   }
-});
+```kotlin
+val (response, exception) = apiEngine.call((userId, userPassword, lastUpdateTime, password, 0)
+// response.data can be Student class, or Teacher class.
 ```
 
 ## Android support
@@ -78,7 +69,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.kittinunf.fuel:fuel-android:1.3.1'
+    compile 'com.github.kittinunf.fuel:fuel-android:1.5.0'
 }
 ```
 

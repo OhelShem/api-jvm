@@ -1,28 +1,20 @@
 package com.ohelshem.api.controller.implementation
 
-import com.github.kittinunf.result.failure
+import com.github.kittinunf.result.Result
 import com.github.kittinunf.result.flatMap
-import com.github.kittinunf.result.success
 import com.ohelshem.api.Api
+import com.ohelshem.api.Api.Response
 import com.ohelshem.api.controller.declaration.ApiEngine
 import com.ohelshem.api.controller.declaration.ApiParser
-import com.ohelshem.api.controller.declaration.RequestsController
+import com.ohelshem.api.controller.declaration.Requests
 
 
-class ApiEngineImpl(override val parser: ApiParser, private val requestsController: RequestsController) : ApiEngine {
+class ApiEngineImpl(override val parser: ApiParser, private val requests: Requests) : ApiEngine {
     override val apiVersion: String = "2.0.1"
 
-    override fun call(request: Api.Request, callback: Api.Callback) {
-        requestsController.post(ApiEndpoint, headers(request.identity, request.password, request.lastUpdateTime)) { response, result ->
-            result.flatMap { parser.parse(it) }.apply {
-                success {
-                    callback.onSuccess(it)
-                }
-                failure {
-                    callback.onFailure(it)
-                }
-            }
-        }
+    override suspend fun call(request: Api.Request): Result<Response, Exception> {
+        val (_, result) =  requests.post(ApiEndpoint, headers(request.identity, request.password, request.lastUpdateTime))
+        return result.flatMap(parser::parse)
     }
 
     private fun headers(id: String, password: String, lastUpdateTime: Long) = listOf(

@@ -24,7 +24,7 @@ fun String.getTestResource(): File = File("src/test/resources/$this")
 
 fun String.getData() = getTestResource().readText()
 
-val WhiteColorProvider = object : ColorProvider {
+object WhiteColorProvider : ColorProvider {
     val color = 0xffffffff.toInt()
 
     override val timetableColors: IntArray = intArrayOf(color)

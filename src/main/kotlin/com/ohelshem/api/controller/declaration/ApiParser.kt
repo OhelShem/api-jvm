@@ -23,5 +23,5 @@ import com.ohelshem.api.Api
 interface ApiParser {
     fun parse(data: String): Result<Api.Response, ApiException>
 
-    class ApiException(val error: Int) : Exception()
+    class ApiException(val error: Int, cause: Exception? = null) : Exception("Error $error", cause)
 }
