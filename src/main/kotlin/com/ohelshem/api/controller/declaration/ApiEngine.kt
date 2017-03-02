@@ -9,7 +9,7 @@ interface ApiEngine {
     val apiVersion: String
     val parser: ApiParser
 
-    suspend fun call(request: Request): Result<Response, Exception>
+    fun call(request: Request): Result<Response, Exception>
 
-    suspend fun call(identity: String, password: String, lastUpdateTime: Long) = call(Request(identity, password, lastUpdateTime, apiVersion))
+    fun call(identity: String, password: String, lastUpdateTime: Long) = call(Request(identity, password, lastUpdateTime, apiVersion))
 }

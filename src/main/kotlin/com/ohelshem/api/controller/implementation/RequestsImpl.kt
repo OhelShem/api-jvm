@@ -26,13 +26,13 @@ import com.ohelshem.api.controller.declaration.Requests.Response
 object RequestsImpl : Requests {
     private const val DefaultTimeout = 5000
 
-    override suspend fun get(url: String): Pair<Response, Result<String, Exception>> {
+    override fun get(url: String): Pair<Response, Result<String, Exception>> {
         val (_, response, result) = url.httpGet().timeout(DefaultTimeout).responseString()
 
         return Response(response.httpStatusCode, response.httpResponseHeaders) to result
     }
 
-    override suspend fun post(url: String, body: String?): Pair<Response, Result<String, Exception>> {
+    override fun post(url: String, body: String?): Pair<Response, Result<String, Exception>> {
         val (_, response, result) = url.httpPost().timeout(DefaultTimeout).apply { if (body != null) body(body) }.responseString()
 
         return Response(response.httpStatusCode, response.httpResponseHeaders) to result

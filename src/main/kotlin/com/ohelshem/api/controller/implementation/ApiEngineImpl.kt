@@ -12,8 +12,8 @@ import com.ohelshem.api.controller.declaration.Requests
 class ApiEngineImpl(override val parser: ApiParser, private val requests: Requests) : ApiEngine {
     override val apiVersion: String = "2.0.1"
 
-    override suspend fun call(request: Api.Request): Result<Response, Exception> {
-        val (_, result) =  requests.post(ApiEndpoint, headers(request.identity, request.password, request.lastUpdateTime))
+    override fun call(request: Api.Request): Result<Response, Exception> {
+        val (_, result) = requests.post(ApiEndpoint, headers(request.identity, request.password, request.lastUpdateTime))
         return result.flatMap(parser::parse)
     }
 

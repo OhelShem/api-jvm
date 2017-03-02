@@ -1,12 +1,11 @@
 package com.ohelshem.api.controller.declaration
 
 import com.github.kittinunf.result.Result
-import java.util.concurrent.Callable
 
 interface Requests {
-    suspend fun get(url: String): Pair<Response, Result<String, Exception>>
-    suspend fun post(url: String, body: String? = null): Pair<Response, Result<String, Exception>>
-    suspend  fun post(url: String, params: List<Pair<String, String>>) = post(url, params.encode())
+    fun get(url: String): Pair<Response, Result<String, Exception>>
+    fun post(url: String, body: String? = null): Pair<Response, Result<String, Exception>>
+    fun post(url: String, params: List<Pair<String, String>>) = post(url, params.encode())
 
     data class Response(val statusCode: Int, val headers: Map<String, List<String>>)
 
